@@ -4,7 +4,7 @@ let currentPosition = 0;
 let pickedSoundBox = null;
 
 //split our sound into n sounds
-//setupSoundBoxes();
+setupSoundBoxes();
 
 function setupSoundBoxes(){
     const words = ["two", "one", "three", "four", "five"];
@@ -44,6 +44,7 @@ function moveLeft(){
     }
 }
 
+//todo debud this
 function closestBoxIndex(){
     let closestDis = 1000;
     let closestIndex = 0;
