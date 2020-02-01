@@ -1,4 +1,3 @@
-
 let soundGrid = [];
 let currentPosition = 0;
 let pickedSoundBox = null;
@@ -6,7 +5,7 @@ const spacing = 5;
     
 
 //split our sound into n sounds
-//setupSoundBoxes();
+setupSoundBoxes();
 
 function setupSoundBoxes(){
     const words = ["two", "one", "three", "four", "five"];
@@ -40,7 +39,7 @@ function moveLeft(){
     }
 }
 
-function currentBoxIndex(){
+function getCurrentBoxIndex(){
     for(let i = 0;i<soundGrid.length;i++){
         let dis = Math.abs(soundGrid[i].x - currentPosition);
 
@@ -54,9 +53,9 @@ function currentBoxIndex(){
 
 function boxAction(){
     
-    let currentBoxIndex = currentBoxIndex();
+    let currentBoxIndex = getCurrentBoxIndex();
 
-    if(pickedSoundBox != null) {
+    if(pickedSoundBox !== null) {
         dropBox();
 
         if(currentBoxIndex === -1){
@@ -65,6 +64,9 @@ function boxAction(){
         }
 
         else{
+            console.log(currentBoxIndex);
+            console.log(pickedSoundBox);
+
             swapBox();
         }
     }
@@ -76,7 +78,7 @@ function boxAction(){
 
 function swapBox(){
 
-    let tempBox = soundGrid.splice(closestBoxIndex(), 1)[0];
+    let tempBox = soundGrid.splice(getCurrentBoxIndex(), 1)[0];
     tempBox.pickUp();
 
     pickedSoundBox.drop();
@@ -87,7 +89,7 @@ function swapBox(){
 }
 
 function pickupBox(){
-    pickedSoundBox = soundGrid.splice(closestBoxIndex(), 1)[0];
+    pickedSoundBox = soundGrid.splice(getCurrentBoxIndex(), 1)[0];
     pickedSoundBox.pickUp();
 }
 
