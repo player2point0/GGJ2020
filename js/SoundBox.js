@@ -1,6 +1,6 @@
 class SoundBox{
 
-    constructor(x, word){
+    constructor(x, word, spacing){
         this.sound = new Howl({
             src: ['../audio/sound2.webm', '../audio/sound2.mp3'],
             sprite: {
@@ -14,18 +14,19 @@ class SoundBox{
 
         this.word = word;
         this.x = x;
+        this.spacing = spacing;
 
         this.id = this.sound.play(word);
         this.sound.pos(this.x, 0, 0, this.id);
     }
 
     moveRight(){
-        this.x++;
+        this.x += spacing;
         this.sound.pos(this.x, 0, 0, this.id);
     }
 
     moveLeft(){
-        this.x--;
+        this.x -= spacing;
         this.sound.pos(this.x, 0, 0, this.id);
     }
 
@@ -33,7 +34,6 @@ class SoundBox{
         this.sound.volume(0);
     }
 
-    
     drop(){
         this.sound.volume(1);
     }
